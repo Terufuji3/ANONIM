@@ -3,10 +3,12 @@ ENV LANG C.UTF-8
 
 RUN apt-get update -qq && apt-get install -y \
     build-essential \
-    nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 RUN gem install bundler
+
+# install nodejs(LTS)
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
 
 #yarn install
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \

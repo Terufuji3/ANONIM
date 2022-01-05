@@ -1,0 +1,17 @@
+h1
+  = @room.title
+
+- @posts.each do |post|
+  = post.id 
+  | : 
+  = post.body
+
+h3 新規投稿
+
+= form_with model: @post do |f|
+  = f.label :body, "本文"
+  = f.text_field :body
+
+  = f.hidden_field :room_id, value: @room.id
+
+  = f.submit "投稿" 
