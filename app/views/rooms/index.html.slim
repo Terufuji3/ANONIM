@@ -12,6 +12,8 @@ ul
       - else 
         | （投稿はまだありません）
 
+= link_to "最終確認用ボタン", "#", class: "btn btn-primary"
+
 h1 room新規作成
 = form_with model: @newRoom do |f|
   = f.label :title, "Room名"
