@@ -6,8 +6,8 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @posts = Post.where(room_id: params[:id])
-    @post = Post.new
+    @posts = @room.posts
+    @post = @room.posts.new
   end
 
   def create
