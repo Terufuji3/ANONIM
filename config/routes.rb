@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  #get 'rooms/index'
-  #get '/rooms/:id', to: 'rooms#show'
-  #post '/rooms', to: 'rooms#create'
+  root 'static_pages#top'
+  get 'terms', to: 'static_pages#terms'
 
   resources :rooms, only: [:index, :show, :create]
   resources :posts, only: [:create]
