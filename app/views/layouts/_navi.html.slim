@@ -1,0 +1,22 @@
+
+
+
+
+.h-100 
+    .page-wrapper.d-flex.flex-row.h-100.w-100
+        .sidebar.bg-primary.bg-gradient
+            .brand.p-4
+                = link_to "ANONIM", '/', id: "logo"
+            ul.nav.flex-column.m-o.p-3
+                li.nav-item.mb-2
+                    = link_to rooms_path, class: 'nav-link' do
+                        | ルームを探す
+                li.nav-item.mb-2
+                    = link_to '#', class: 'nav-link' do
+                        | 参加中のルーム
+                li.nav-item.mb-2
+                    = link_to '#', class: 'nav-link' do
+                        | ルーム作成
+                li.nav-item.mb-2
+                    = link_to '#', class: 'nav-link' do
+                        | 設定
