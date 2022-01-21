@@ -9,6 +9,8 @@ html
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = render 'layouts/navi'
-    .container
-      = yield
+    .container-fluid
+      .row.flex-nowrap
+        = render 'layouts/navi'
+        .bg-light
+          = yield
