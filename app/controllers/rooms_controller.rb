@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   def index
     @rooms = Room.all
-    @newRoom = Room.new
+    #@newRoom = Room.new
   end
 
   def show
@@ -13,7 +13,11 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     @room.save
-    redirect_to rooms_index_path
+    redirect_to room_path(@room.id)
+  end
+
+  def new
+    @newRoom = Room.new
   end
 
   private

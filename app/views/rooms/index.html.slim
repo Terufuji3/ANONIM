@@ -1,24 +1,16 @@
-.col.py-3
-  h1
-    | Rooms一覧
-  ul
-    - @rooms.each do |room|
-      .card.mt-3
-        li.list-unstyled
-          .card-body
-            .fw-bold
-              = link_to room.title, room_path(room.id)
-            br
-            - if @latest = room.posts.order(created_at: :desc).limit(1)[0]
-              | 最終投稿日時：
-              = @latest.created_at
-            - else 
-              | 投稿はまだありません
-
-  h1 room新規作成
-  = form_with model: @newRoom do |f|
-    = f.label :title, "Room名"
-    = f.text_field :title
-
-    = f.submit "作成"
+h1
+  | Rooms一覧
+ul
+  - @rooms.each do |room|
+    .card.mt-3
+      li.list-unstyled
+        .card-body
+          .fw-bold
+            = link_to room.title, room_path(room.id)
+          br
+          - if @latest = room.posts.order(created_at: :desc).limit(1)[0]
+            | 最終投稿日時：
+            = @latest.created_at
+          - else 
+            | 投稿はまだありません
 
