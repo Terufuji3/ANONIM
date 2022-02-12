@@ -75,9 +75,9 @@
                         <hr class="dropdown-divider">
                     </li>
                     li
-                        = link_to destroy_user_session_path, class: "dropdown-item" do 
+                        = link_to destroy_user_session_path, :method => :delete, class: "dropdown-item" do 
                             | Sign out
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    /<li><a class="dropdown-item" href="#">Sign out</a></li>
                 </ul>
             - else
                 = link_to new_user_session_path,  class: "d-flex align-items-center text-white text-decoration-none" do
