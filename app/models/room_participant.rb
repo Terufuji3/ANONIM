@@ -1,0 +1,2 @@
+class RoomParticipant < ApplicationRecord
+end

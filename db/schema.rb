@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_125324) do
+ActiveRecord::Schema.define(version: 2022_02_13_061950) do
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "body"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2022_02_12_125324) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "room_id", null: false
     t.index ["room_id"], name: "index_posts_on_room_id"
+  end
+
+  create_table "room_participants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "room_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["room_id"], name: "index_room_participants_on_room_id"
+    t.index ["user_id"], name: "index_room_participants_on_user_id"
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -40,4 +49,6 @@ ActiveRecord::Schema.define(version: 2022_02_12_125324) do
   end
 
   add_foreign_key "posts", "rooms"
+  add_foreign_key "room_participants", "rooms"
+  add_foreign_key "room_participants", "users"
 end
