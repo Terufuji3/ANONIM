@@ -6,18 +6,17 @@
             li.nav-item
                 = link_to rooms_path, class: "nav-link align-middle px-0" do
                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline text-white">ルームを探す</span>
-            <li>
-                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-white">参加中のルーム</span> </a>
-                <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                    <li class="w-100">
-                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-white">Item</span> 1 </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-white">Item</span> 2 </a>
-                    </li>
-                </ul>
-            </li>
+
+            - if current_user
+                li
+                    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-white">参加中のルーム</span> </a>
+                    <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                        - current_user.participating_rooms.each do |room|
+                            li.w-100
+                                = link_to room.title, room_path(room.id), class: "nav-link px-0 text-white"
+                    </ul>
+
             <li>
                 = link_to new_room_path, class: "nav-link px-0 align-middle" do
                     <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline text-white">ルーム作成</span></a>

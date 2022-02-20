@@ -2,4 +2,5 @@ h1 room新規作成
 = form_with model: @newRoom do |f|
     = f.label :title, "Room名"
     = f.text_field :title
+    = f.hidden_field :owner_id, :value => current_user.id
     = f.submit "作成"
