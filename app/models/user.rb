@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :rooms
   has_many :room_participants
   has_many :participating_rooms, through: :room_participants, source: :room
+
+  has_many :room_bookmarks
 end

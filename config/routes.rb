@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index, :show, :create, :new]
   resources :posts, only: [:create]
   resources :users, only: [:show]
+  resources :room_bookmarks, only: [:create, :destroy]
 end

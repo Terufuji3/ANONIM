@@ -1,9 +1,21 @@
 h1
   = @room.title
 
+- if !current_user.room_bookmarks.find_by(room_id: @room.id)
+  = form_with model: current_user.room_bookmarks.build do |f|
+    = f.hidden_field :room_id, value: @room.id
+    = f.submit "bookmark", class: "btn btn-primary"
+-else
+  = form_with(model: current_user.room_bookmarks.find_by(room_id: @room.id),
+              html: {method: :delete}, local: true) do |f|
+    = f.hidden_field :room_id, value: @room.id
+    = f.submit "bookmark解除", class: "btn btn-default"
+
+
+
 - @posts.each do |post|
   li
-    = post.created_at 
+    = post.created_at
     | : 
     = post.body
 

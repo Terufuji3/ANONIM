@@ -10,11 +10,12 @@
             - if current_user
                 li
                     <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-white">参加中のルーム</span> </a>
+                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-white">ブックマーク</span> </a>
                     <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                        - current_user.participating_rooms.each do |room|
+                        - current_user.room_bookmarks.each do |bookmark|
                             li.w-100
-                                = link_to room.title, room_path(room.id), class: "nav-link px-0 text-white"
+                                - if room = Room.find_by(id: bookmark.room_id)
+                                    = link_to room.title, room_path(room.id), class: "nav-link px-0 text-white"
                     </ul>
 
             <li>
