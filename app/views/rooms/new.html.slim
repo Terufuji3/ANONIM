@@ -2,5 +2,11 @@ h1 room新規作成
 = form_with model: @newRoom do |f|
     = f.label :title, "Room名"
     = f.text_field :title
+
+    = f.radio_button :limited_access, :false
+    = f.label :limited_access, "全体公開", {value: :false, style: "display: inline-block;"}
+    = f.radio_button :limited_access, :true
+    = f.label :limited_access, "限定公開",  {value: :ture, style: "display: inline-block;"}
+
     = f.hidden_field :owner_id, :value => current_user.id
     = f.submit "作成"

@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    @rooms = Room.where(limited_access: 0)
     #@newRoom = Room.new
   end
 
@@ -24,6 +24,6 @@ class RoomsController < ApplicationController
 
   private
     def room_params
-      params.require(:room).permit(:title, :owner_id)
+      params.require(:room).permit(:title, :limited_access, :owner_id)
     end
 end
