@@ -1,0 +1,7 @@
+h1 パスワード確認
+
+= form_with url: password_check_room_path(@room.id) do |f|
+    = f.label :password, "パスワード"
+    = f.text_field :password
+
+    =f.submit "確認"

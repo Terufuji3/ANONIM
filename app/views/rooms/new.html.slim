@@ -8,5 +8,8 @@ h1 room新規作成
     = f.radio_button :limited_access, :true
     = f.label :limited_access, "限定公開",  {value: :ture, style: "display: inline-block;"}
 
+    = f.label :password, "パスワード"
+    = f.text_field :password
+
     = f.hidden_field :owner_id, :value => current_user.id
     = f.submit "作成"

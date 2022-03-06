@@ -8,6 +8,10 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @posts = @room.posts
     @post = @room.posts.new
+    if @room.password.present? && session[:joinable_room] != @room.id
+      redirect_to confirmation_room_path(@room.id)
+    end
+    session[:joinable_room] = nil
   end
 
   def create
@@ -22,8 +26,22 @@ class RoomsController < ApplicationController
     @newRoom = Room.new
   end
 
+  def confirmation
+    @room = Room.find(params[:id])
+  end
+
+  def password_check
+    @room = Room.find(params[:id])
+    if @room.password == params[:password]
+      session[:joinable_room] = @room.id
+      redirect_to room_path(@room.id)
+    else
+      redirect_to confirmation_room_path(@room.id)
+    end
+  end
+
   private
     def room_params
-      params.require(:room).permit(:title, :limited_access, :owner_id)
+      params.require(:room).permit(:title, :limited_access, :password, :owner_id)
     end
 end
