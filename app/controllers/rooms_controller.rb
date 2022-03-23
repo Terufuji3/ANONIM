@@ -6,6 +6,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    gon.room = @room
     @posts = @room.posts
     @post = @room.posts.new
     if @room.password.present? && session[:joinable_room] != @room.id

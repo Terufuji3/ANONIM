@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
 
     def create
-        @post = Post.new(post_params)
-        @post.save
-        redirect_to room_path(post_params[:room_id])
+        #@post = Post.new(post_params)
+        #@post.save
+        #redirect_to room_path(post_params[:room_id])
     end
 
     private
