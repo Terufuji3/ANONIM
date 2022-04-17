@@ -29,4 +29,5 @@ window.onbeforeunload = function(){
   subscriptions.forEach(function(subscription){
     consumer.subscriptions.remove(subscription);
   });
+  //appRoom.leave();
 }

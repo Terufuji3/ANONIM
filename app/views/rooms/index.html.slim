@@ -6,7 +6,7 @@ ul
       li.list-unstyled
         .card-body
           .fw-bold
-            = link_to room.title, room_path(room.id)
+            = link_to room.title, room_path(room.id), data: {"turbolinks" => false}
           br
           - if @latest = room.posts.order(created_at: :desc).limit(1)[0]
             | 最終投稿日時：
